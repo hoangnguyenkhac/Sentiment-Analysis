@@ -35,3 +35,40 @@ Dự án này sử dụng mô hình BERT và kỹ thuật Transfer Learning đ�
 git clone https://github.com/hoangnguyenkhac/Sentiment-Analysis.git
 cd Sentiment-Analysis
 ```
+## 🔄 Luồng Xử Lý Dự Án
+
+```mermaid
+graph TD
+    subgraph Training
+    A[Comments.csv] --> C[Raw Data]
+    B[Social Media Data] --> C
+    C --> D[Preprocessing]
+    D --> E[Labeled Corpus]
+    E --> F[PhoBERT Training]
+    F --> G[Trained Model]
+    end
+
+    subgraph Testing
+    H[User Input] --> I[Preprocessing]
+    I --> J[Model Prediction]
+    J --> K[Softmax Classifier]
+    K --> L[Positive]
+    K --> M[Neutral]
+    K --> N[Negative]
+    G --> J
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style D fill:#dfd,stroke:#333,stroke-width:2px
+    style E fill:#dfd,stroke:#333,stroke-width:2px
+    style F fill:#fdd,stroke:#333,stroke-width:2px
+    style G fill:#fdd,stroke:#333,stroke-width:2px
+    style H fill:#f9f,stroke:#333,stroke-width:2px
+    style I fill:#dfd,stroke:#333,stroke-width:2px
+    style J fill:#fdd,stroke:#333,stroke-width:2px
+    style K fill:#fdd,stroke:#333,stroke-width:2px
+    style L fill:#bfb,stroke:#333,stroke-width:2px
+    style M fill:#fbf,stroke:#333,stroke-width:2px
+    style N fill:#fbb,stroke:#333,stroke-width:2px
